@@ -1,13 +1,28 @@
 import React, { useState } from 'react'
 import classes from './App.module.css'
+import config from './config'
+import axios from 'axios'
+
+// firebase
+import firebaseKey from './firebase-key'
+
+import firebase from 'firebase'
+
+const app = firebase.initializeApp(firebaseKey)
+
+
 const App = () => {
   const [filename, setFilename] = useState('')
   const handleFilenameChange = (e) => {
     const { value } = e.target
     setFilename(value)
   }
-  const fileSubmit = () => {
-
+  const fileSubmit = async () => {
+    const { data } = await axios({
+      method: "POST",
+      url: `${config.apiUrl}/analyze`,
+      data: { filename }
+    })
   }
   return (
     <>
