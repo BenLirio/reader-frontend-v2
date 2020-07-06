@@ -1,6 +1,7 @@
 import axios from 'axios'
 const annotate = async (file, apiKey) => {
-  const content = await toBase64(file)
+  // const content = await toBase64(file)
+  const content = file
   const request = {
     image: {
       content: content,
