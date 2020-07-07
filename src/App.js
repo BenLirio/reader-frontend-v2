@@ -1,28 +1,12 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import response from './response.json'
-import { ImageCompressor } from 'image-compressor'
-import firebaseKey from './firebase-key'
-import firebase from 'firebase'
 
-import annotate from './textAnnotation'
 import textAnnotation from './textAnnotation'
 
-const imageCompressor = new ImageCompressor()
-const compressorSettings = {
-  toWidth: 1024,
-  toHeight: 1024,
-  mimeType: 'image/png',
-  mode: 'strict',
-  quality: .8,
-  grayScale: true,
-  speed: 'low'
-};
+
 console.log('response', response.data.responses[0])
 
-// // firebase
 
-const app = firebase.initializeApp(firebaseKey)
-// console.log('app', app)
 const App = () => {
 
   const handleFile = async (e) => {
@@ -41,9 +25,6 @@ const App = () => {
     //   ctx.drawImage(img, 0, 0)
     // })
     // img.src = dataUrl
-  }
-  const doStuff = () => {
-
   }
 
   return (

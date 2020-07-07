@@ -1,13 +1,15 @@
 import axios from 'axios'
 import { ImageCompressor } from 'image-compressor'
 import key from './firebase-key'
+
 const textAnnotation = async (file) => {
   const dataURL = await fileToDataURL(file)
   const compressedDataURL = await compressDataURL(dataURL)
   const formatedDataURL = await formatDataURL(compressedDataURL)
   const res = await textAnnotationRequest(formatedDataURL)
-  return getFirestResponse(res)
+  return getFirstResponse(res)
 }
+
 
 export default textAnnotation
 
@@ -78,6 +80,6 @@ const textAnnotationRequest = async (cleanDataUrl) => {
 }
 
 // get result
-const getFirestResponse = (res) => {
+const getFirstResponse = (res) => {
   return res.data.responses[0]
 }
